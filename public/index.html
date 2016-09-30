@@ -3,27 +3,28 @@
 <html ng-app='talkingHeadsApp'>
 	<head>
 		<title>Talking Heads</title>
-
+		<base href="/">
 		<link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
 		<link href='/public/css/main.css' rel='stylesheet' type='text/css'>
 	</head>
 
 	<body>
-		<div class='container' ng-controller='pollController'>
-			<ul class='candidates'>
-				<li class='candidate' data-ng-repeat='candidate in candidates'>
-					<img
-						data-ng-src='{{ candidate.image }}'
-						data-ng-title='{{ candidate.name }}'
-						data-ng-style='getStyles(candidate)' />
-				</li>
-			</ul>
+		<div class='container'>
+			<ui-view></ui-view>
 		</div>
 
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js'></script>
-		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-resource.min.js'></script>
-		<script type='text/javascript' src='controllers/pollController.client.js'></script>
+		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js'></script>
+		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.min.js'></script>
+		<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js'></script>
+
+		<script type='text/javascript' src='_common/_modl.js'></script>
+		<!-- <script type='text/javascript' src='controllers/pollController.client.js'></script> -->
+		<script type='text/javascript' src='models/poll.model.js'></script>
+		<script type='text/javascript' src='services/candidate.service.js'></script>
+		<script type='text/javascript' src='components/candidates.componentController.js'></script>
+		<script type='text/javascript' src='components/candidates.component.js'></script>
+		<script type='text/javascript' src='components/admin.component.js'></script>
 	</body>
 
 </html>

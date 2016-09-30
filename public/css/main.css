@@ -29,40 +29,82 @@
 body {
 	font-family: 'Roboto', sans-serif;
 	font-size: 16px;
+  background-color: #333;
 }
 
 .candidates {
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	position: absolute;
+	/*position: absolute;
 	top: 0;
 	right: 0;
 	bottom: 0;
-	left: 0;
+	left: 0;*/
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .candidate {
 	margin: 0;
 	padding: 0;
-	position: fixed;
-	-webkit-animation-name: spin;
-	-webkit-animation-duration: 30000ms;
-	-webkit-animation-iteration-count: infinite;
-	-webkit-animation-timing-function: linear;
+	/*position: fixed;*/
+}
 
-	-moz-animation-name: spin;
-	-moz-animation-duration: 30000ms;
-	-moz-animation-iteration-count: infinite;
-	-moz-animation-timing-function: linear;
+.candidate img {
+  /*-webkit-animation-name: spin;
+  -webkit-animation-duration: 30000ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
 
-	-ms-animation-name: spin;
-	-ms-animation-duration: 30000ms;
-	-ms-animation-iteration-count: infinite;
-	-ms-animation-timing-function: linear;
+  -moz-animation-name: spin;
+  -moz-animation-duration: 30000ms;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
 
-	animation-name: spin;
-	animation-duration: 30000ms;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
+  -ms-animation-name: spin;
+  -ms-animation-duration: 30000ms;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+
+  animation-name: spin;
+  animation-duration: 30000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;*/
+}
+.candidate__percentage {
+  font-size: 3rem;
+  color: #FFF;
+  text-align: center;
+}
+
+.candidate__percentage::after {
+  content: '%';
+}
+
+.candidate__quote {
+  max-width: 350px;
+  color: #fff;
+  line-height: 1.5;
+  font-family: 'Roboto';
+}
+
+/* Admin Page */
+
+.admin-page {
+  color: #fff;
+  padding: 30px;
+}
+
+.admin-page a {
+  background-color: #369;
+  color: #fff;
+  text-decoration: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 0 40px;
+  border-radius: 25px;
+  line-height: 45px;
 }

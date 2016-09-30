@@ -1,0 +1,9 @@
+<ul class='candidates'>
+  <li class='candidate' data-ng-repeat='candidate in candidates'>
+    <img
+      data-ng-src='{{ candidate.image }}'
+      data-ng-title='{{ candidate.name }}'
+      data-ng-style='getStyles(candidate.percentage)' />
+    <div>{{ candidate.percentage }}</div>
+  </li>
+</ul>

@@ -3,6 +3,10 @@
   "version": "1.0.2",
   "description": "The talking heads of our 2016 presidential election.",
   "main": "server.js",
+  "scripts": {
+    "db": "mongod",
+    "start": "node server.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sturdynut/talking-heads"
@@ -21,6 +25,7 @@
   "author": "Matti Salokangas",
   "license": "MIT",
   "dependencies": {
+    "angular-ui-router": "^0.3.1",
     "cheerio": "^0.22.0",
     "express": "^4.12.4",
     "mongodb": "^2.0.33",
