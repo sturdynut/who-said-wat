@@ -5,21 +5,45 @@
     .module( "talkingHeadsApp" )
     .controller( "candidatesController",
       [ "$scope",
+      "$log",
       "$timeout",
       "candidateService",
-      function( $scope, $timeout, candidateService ) {
-        var self = $scope;
+      function( $scope, $log, $timeout, candidateService ) {
+        var vm = $scope;
 
         // Interface
-        self.getStyles = candidateService.getStyles;
+
+        vm.candidates = null;
+        vm.quoteIndex = 0;
+        vm.guess = guess;
+        vm.reset = reset;
+        vm.prev = prev;
+        vm.next = next;
+
+        Object.defineProperty( vm, "currentQuote", {
+          get: function() {
+            return vm.quotes[ vm.quoteIndex ];
+          }
+        } );
 
         // Initialization
 
         function init() {
-          candidateService.getCandidates()
+          candidateService.getCandidates().$promise
             .then( function( data ) {
-              self.candidates = data;
-              $timeout( animateCandidates );
+              vm.candidates = data;
+              // $timeout( animateCandidates );
+            } )
+            .catch( function( err ) {
+              $log.error( "Error", err );
+            } );
+
+          candidateService.getQuotes().$promise
+            .then( function( data ) {
+              vm.quotes = data;
+            } )
+            .catch( function( err ) {
+              $log.error( "Error", err );
             } );
         }
 
@@ -27,45 +51,78 @@
 
         // Implementation
 
-        function animateCandidates() {
-          $( ".candidate" ).each( function( index ) {
-            animateCandidate( this );
-          } );
+        function guess( candidate ) {
+          if ( isWinner( candidate ) ) {
+            setWinner( candidate );
+          } else {
+            setLoser( candidate );
+          }
+        }
+
+        function reset() {
+          setWinner( null );
+          resetAllLosers();
+        }
+
+        function next() {
+          if ( vm.quotes ) {
+            if ( vm.quoteIndex >= 0 && vm.quoteIndex < vm.quotes.length - 1 ) {
+              vm.quoteIndex++;
+            } else if ( vm.quoteIndex === vm.quotes.length - 1 ) {
+              vm.quoteIndex = 0;
+            }
+
+            reset();
+          }
+        }
+
+        function prev() {
+          if ( vm.quotes ) {
+            if ( vm.quoteIndex > 0 ) {
+              vm.quoteIndex--;
+            } else if ( vm.quoteIndex === 0 ) {
+              vm.quoteIndex = vm.quotes.length - 1;
+            }
+
+            reset();
+          }
         }
 
         // Private
 
-        function animateCandidate( candidate ) {
-          var h = $( window ).height() - 50;
-          var w = $( window ).width() - 50;
+        function isWinner( candidate ) {
+          return vm.currentQuote && vm.currentQuote.short_name === candidate.short_name;
+        }
 
-          var nh = Math.floor( Math.random() * h );
-          var nw = Math.floor( Math.random() * w );
+        function setWinner( winner ) {
+          vm.candidates = _.map( vm.candidates, function( candidate ) {
+            var isWinner = winner ? candidate.short_name === winner.short_name : false;
 
-          var newq = [ nh, nw ];
-          var oldq = $( candidate ).offset();
-
-          var speed = calcSpeed( [ oldq.top, oldq.left ], newq );
-
-          $( candidate ).animate( { top: newq[ 0 ], left: newq[ 1 ] }, speed, function() {
-            animateCandidate( candidate );
+            return _.assign( {}, candidate, {
+              isWinner: isWinner
+            } );
           } );
         }
 
-        // Thank you http://jsfiddle.net/Xw29r/15/
-        function calcSpeed( prev, next ) {
+        function setLoser( loser ) {
+          vm.candidates = _.map( vm.candidates, function( candidate ) {
+            var isLoser = candidate.isLoser;
+            if ( _.isUndefined( isLoser ) || isLoser !== true ) {
+              isLoser = loser ? candidate.short_name === loser.short_name : false;
+            }
 
-          var x = Math.abs( prev[ 1 ] - next[ 1 ] );
-          var y = Math.abs( prev[ 0 ] - next[ 0 ] );
+            return _.assign( {}, candidate, {
+              isLoser: isLoser
+            } );
+          } );
+        }
 
-          var greatest = x > y ? x : y;
-
-          var speedModifier = 0.1;
-
-          var speed = Math.ceil( greatest / speedModifier );
-
-          return speed;
-
+        function resetAllLosers( ) {
+          vm.candidates = _.map( vm.candidates, function( candidate ) {
+            return _.assign( {}, candidate, {
+              isLoser: false
+            } );
+          } );
         }
     } ] );
 } )();

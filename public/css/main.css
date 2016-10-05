@@ -1,3 +1,9 @@
+/*
+
+  Animations
+
+*/
+
 @-ms-keyframes spin {
     from {
         -ms-transform: rotate(0deg);
@@ -26,68 +32,348 @@
         transform: rotate(360deg);
     }
 }
+
+@-ms-keyframes up {
+    from {
+        top: 100vh;
+    } to {
+        top: 0;
+    }
+}
+@-moz-keyframes up {
+    from {
+        top: 100vh;
+    } to {
+        top: 0;
+    }
+}
+@-webkit-keyframes up {
+    from {
+        top: 100vh;
+    } to {
+        top: 0;
+    }
+}
+@keyframes up {
+    from {
+        top: 100vh;
+    } to {
+        top: 0;
+    }
+}
+
+@keyframes chinAnimation {
+  0% {
+    top: 3px;
+  }
+  50% {
+    top: 0;
+  }
+  100% {
+    top: 3px;
+  }
+}
+
+@keyframes disappear {
+  0% {
+    opacity: 1;
+  }
+  15% {
+    opacity: 0.3;
+  }
+  30% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 0.3;
+  }
+  60% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/*
+
+  Base Styles
+
+*/
+
 body {
 	font-family: 'Roboto', sans-serif;
-	font-size: 16px;
+	font-size: 10px;
   background-color: #333;
+  padding: 0;
+  margin: 0;
+}
+
+button:focus,
+button:active:focus {
+  outline: 0 !important;
+}
+
+candidates {
+  display: flex;
+  flex-direction: column;
+}
+
+.keyboard {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: disappear 4s;
+  animation-fill-mode: forwards;
+  z-index: 50;
+  background: transparent url('/public/img/keyboard-keys.svg') center no-repeat;
+  width: 252px;
+  height: 88px;
+  transition: all 300ms;
+}
+
+/*
+
+  Quote Section
+
+*/
+
+.quotes-container {
+  background-color: #fff;
+  position: relative;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2em 140px 2em 2em;
+  min-height: 80px;
+}
+
+.quotes {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.quote {
+  color: #000;
+  line-height: 1.5;
+  font-size: 2.5em;
+  display: none;
+  font-family: 'Courier New';
+}
+
+.quotes-controls {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  background: rgba(0,0,0,0.1);
+  border-radius: 50px;
+  text-align: center;
+  padding: 0 4px;
+}
+
+.quotes-controls button {
+  cursor: pointer;
+  background-color: transparent;
+  border-style: none;
+  font-size: 5em;
+}
+
+.quote.is-active {
+  display: block;
+  text-align: center;
+}
+
+/*
+
+  Candidates Section
+
+*/
+
+.candidates-quote {
+  /*position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;*/
+  background: #fff;
+  z-index: 10;
+  /*height: 220px;*/
+  font-size: 4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
 }
 
 .candidates {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	/*position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;*/
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /*position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;*/
   display: flex;
-  align-items: flex-end;
   justify-content: center;
 }
 
 .candidate {
 	margin: 0;
 	padding: 0;
-	/*position: fixed;*/
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  top: 100vh;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  transition: all 500ms;
+
+  -webkit-animation-name: up;
+  -webkit-animation-duration: 500ms;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards;
+
+  -moz-animation-name: up;
+  -moz-animation-duration: 500ms;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-timing-function: linear;
+  -moz-animation-fill-mode: forwards;
+
+  -ms-animation-name: up;
+  -ms-animation-duration: 500ms;
+  -ms-animation-iteration-count: 1;
+  -ms-animation-timing-function: linear;
+  -ms-animation-fill-mode: forwards;
+
+  animation-name: up;
+  animation-duration: 500ms;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
 
-.candidate img {
-  /*-webkit-animation-name: spin;
-  -webkit-animation-duration: 30000ms;
+.candidate--loser {
+  background-color: #b00 !important;
+}
+
+.candidate--winner {
+  background-color: #0b0 !important;
+}
+
+.candidate--winner img {
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 1000ms;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 
   -moz-animation-name: spin;
-  -moz-animation-duration: 30000ms;
+  -moz-animation-duration: 1000ms;
   -moz-animation-iteration-count: infinite;
   -moz-animation-timing-function: linear;
 
   -ms-animation-name: spin;
-  -ms-animation-duration: 30000ms;
+  -ms-animation-duration: 1000ms;
   -ms-animation-iteration-count: infinite;
   -ms-animation-timing-function: linear;
 
   animation-name: spin;
-  animation-duration: 30000ms;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.candidate--clinton {
+  background-color: #232066;
+  -webkit-animation-delay: 500ms;
+  -moz-animation-delay: 500ms;
+  -ms-animation-delay: 500ms;
+  animation-delay: 500ms;
+}
+
+.candidate--drumph {
+  background-color: #E91D0E;
+  -webkit-animation-delay: 600ms;
+  -moz-animation-delay: 600ms;
+  -ms-animation-delay: 600ms;
+  animation-delay: 600ms;
+}
+
+.candidate--johnson {
+  background-color: #FDD400;
+  -webkit-animation-delay: 700ms;
+  -moz-animation-delay: 700ms;
+  -ms-animation-delay: 700ms;
+  animation-delay: 700ms;
+}
+
+.candidate-image-chin,
+.candidate-image {
+  /*position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);*/
+}
+
+.candidate-image-chin__image,
+.candidate-image__image {
+  max-width: 95%;
+  max-height: 500px;
+}
+
+.candidate-image-chin__image {
+  position: relative;
+
+  /*-webkit-animation-name: chinAnimation;
+  -webkit-animation-duration: 400ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+
+  -moz-animation-name: chinAnimation;
+  -moz-animation-duration: 400ms;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+
+  -ms-animation-name: chinAnimation;
+  -ms-animation-duration: 400ms;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+
+  animation-name: chinAnimation;
+  animation-duration: 400ms;
   animation-iteration-count: infinite;
   animation-timing-function: linear;*/
 }
+
+.candidate__name {
+  font-size: 5.5em;
+  margin: 0;
+  padding: 0 0 20px 0;
+}
+
 .candidate__percentage {
-  font-size: 3rem;
-  color: #FFF;
-  text-align: center;
+  font-size: 3.5em;
+  padding: 0 0 15% 0;
 }
 
 .candidate__percentage::after {
   content: '%';
-}
-
-.candidate__quote {
-  max-width: 350px;
-  color: #fff;
-  line-height: 1.5;
-  font-family: 'Roboto';
 }
 
 /* Admin Page */
@@ -95,6 +381,7 @@ body {
 .admin-page {
   color: #fff;
   padding: 30px;
+  font-size: 2em;
 }
 
 .admin-page a {
@@ -107,4 +394,19 @@ body {
   padding: 0 40px;
   border-radius: 25px;
   line-height: 45px;
+}
+
+.form-container {
+
+}
+
+.form-row {
+  margin: 0 0 20px 0;
+}
+
+.form-row label {
+  width: 100px;
+  display: inline-block;
+  text-align: right;
+  padding-right: 10px;
 }

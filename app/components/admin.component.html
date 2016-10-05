@@ -1,0 +1,43 @@
+<div class='admin-page'>
+  <h1>Administration</h1>
+  <a ui-sref='index'>Go Home</a>
+  <div class='container'>
+    <form name='quote-form' class='form-container' novalidate>
+      <div class='form-row'>
+        <label for='quote'>Quote:</label>
+        <input id='quote' type='text' data-ng-model='model.quote' class='text-box' placeholder='Enter quote' />
+      </div>
+      <div class='form-row'>
+        <label for='candidate'>Candidate:</label>
+        <select id='candidate' data-ng-model='model.short_name' class='select-box'>
+          <option value='Clinton'>Hillary Clinton</option>
+          <option value='Drumph'>Donald Drumph</option>
+          <option value='Johnson'>Gary Johnson</option>
+        </select>
+      </div>
+      <div class='form-row'>
+        <label for='is-active'>Is Active?</label>
+        <input id='is-active' type='checkbox' data-ng-model='model.is_active' class='check-box' />
+      </div>
+      <div class='action-row'>
+        <button class='button' type='submit' data-ng-click='addQuote(model)'>
+          Submit
+        </button>
+      </div>
+    </div>
+    <div class='data-container'>
+      <ul class='data-list' data-ng-repeat='quote in quotes'>
+        <li class='data-list-item'>
+          <input type='text' data-ng-model='quote.quote' />
+          <input type='text' data-ng-model='quote.short_name' />
+          <input type='checkbox' data-ng-model='quote.is_active' />
+          <div class='data-list-item__buttons'>
+            <button class='button' data-ng-click='updateQuote(quote)'>Update</button>
+            &nbsp;&nbsp;
+            <button class='button' data-ng-click='removeQuote(quote)'>Remove</button>
+          </div>
+        <li>
+      </ul>
+    </div>
+  </form>
+</div>

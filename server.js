@@ -2,12 +2,12 @@
 
 var express = require( "express" );
 var mongo = require( "mongodb" ).MongoClient;
-
+var bodyParser = require( "body-parser" );
 var routes = require( "./app/routes/index.js" );
 
 var app = express();
 
-mongo.connect( "mongodb://localhost:27017/talking-heads", function( err, db ) {
+mongo.connect( "mongodb://localhost:27017/who-said-wat", function( err, db ) {
 
 	if ( err ) {
 		throw new Error( "Database failed to connect!" );
@@ -18,9 +18,13 @@ mongo.connect( "mongodb://localhost:27017/talking-heads", function( err, db ) {
 	app.use( "/_common", express.static( process.cwd() + "/app/_common" ) );
 	app.use( "/models", express.static( process.cwd() + "/app/models" ) );
 	app.use( "/services", express.static( process.cwd() + "/app/services" ) );
+	app.use( "/directives", express.static( process.cwd() + "/app/directives" ) );
 	app.use( "/controllers", express.static( process.cwd() + "/app/controllers" ) );
 	app.use( "/components", express.static( process.cwd() + "/app/components" ) );
 	app.use( "/public", express.static( process.cwd() + "/public" ) );
+
+	app.use( require( "body-parser" ).json( { limit: "5mb" } ) );
+  app.use( require( "body-parser" ).urlencoded( { extended: false } ) );
 
 	routes( app, db );
 

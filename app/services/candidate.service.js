@@ -4,18 +4,16 @@
   angular
     .module( "talkingHeadsApp" )
     .service( "candidateService",
-    [ "poll",
-      function( poll ) {
+    [ "poll", "quote",
+      function( poll, quote ) {
         var self = this;
 
         // Properties
 
-        self.maxHeadSize = 1000;
-
         // Interface
 
         self.getCandidates  = getCandidates;
-        self.getStyles      = getStyles;
+        self.getQuotes      = getQuotes;
 
         // Implementation
 
@@ -23,14 +21,8 @@
           return poll.query();
         }
 
-        function getStyles( candidate ) {
-          var headSize = self.maxHeadSize * ( candidate.percentage * .01 );
-          // Var backgroundImage = "url(" + candidate.image + ")";
-
-          return {
-            height: headSize + "px"
-            // BackgroundImage: backgroundImage
-          };
+        function getQuotes() {
+          return quote.query();
         }
 
     } ] );

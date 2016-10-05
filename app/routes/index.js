@@ -1,11 +1,11 @@
 "use strict";
 
 var path = process.cwd();
-var ClickHandler = require( path + "/app/controllers/clickHandler.server.js" );
+var QuoteController = require( path + "/app/controllers/quoteController.server.js" );
 var PollController = require( path + "/app/controllers/pollController.server.js" );
 
 module.exports = function( app, db ) {
-	var clickHandler = new ClickHandler( db );
+	var quoteController = new QuoteController( db );
 
 	app.route( "/" )
 		.get( function( req, res ) {
@@ -17,10 +17,13 @@ module.exports = function( app, db ) {
 			res.sendFile( path + "/public/index.html" );
 		} );
 
-	app.route( "/api/clicks" )
-		.get( clickHandler.getClicks )
-		.post( clickHandler.addClick )
-		.delete( clickHandler.resetClicks );
+	app.route( "/api/quotes" )
+		.get( quoteController.getQuotes )
+		.post( quoteController.addQuote );
+
+	app.route( "/api/quotes/:id" )
+		.post( quoteController.updateQuote )
+		.delete( quoteController.removeQuote );
 
   app.route( "/api/polls" )
     .get( PollController.get );

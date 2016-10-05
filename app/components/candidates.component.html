@@ -1,9 +1,38 @@
-<ul class='candidates'>
-  <li class='candidate' data-ng-repeat='candidate in candidates'>
-    <img
-      data-ng-src='{{ candidate.image }}'
-      data-ng-title='{{ candidate.name }}'
-      data-ng-style='getStyles(candidate.percentage)' />
-    <div>{{ candidate.percentage }}</div>
+<div class='quotes-container' keypress on-left-arrow='prev()' on-right-arrow='next()'>
+  <ul class='quotes'>
+    <li class='quote' data-ng-repeat='quote in quotes'
+      data-ng-class='{"is-active": quote._id == currentQuote._id }'
+      data-ng-bind='quote.quote'>
+    </li>
+  </ul>
+  <div class='quotes-controls'>
+    <button type='button' data-ng-click='prev()'>
+      <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+    </button>
+    <button type='button' data-ng-click='next()'>
+      <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+    </button>
+  </div>
+</div>
+<ul class='candidates' data-ng-show='candidates'>
+  <li class='candidate candidate--{{candidate.short_name.toLowerCase()}}'
+    data-ng-repeat='candidate in candidates'
+    data-ng-click='guess(candidate)'
+    data-ng-class='{ "candidate--loser" : candidate.isLoser, "candidate--winner": candidate.isWinner }'>
+    <div class='candidate-image'>
+      <img
+        class='candidate-image__image'
+        data-ng-src='{{ candidate.image }}'
+        data-ng-title='{{ candidate.name }}' />
+    </div>
+    <!-- <div class='candidate-image-chin'>
+      <img
+        class='candidate-image-chin__image'
+        data-ng-src='{{ candidate.imageChin }}'
+        data-ng-title='{{ candidate.name }}' />
+    </div> -->
+    <h3 class='candidate__name' data-ng-bind='candidate.short_name'></h3>
+    <div class='candidate__percentage'>{{ candidate.percentage }}</div>
   </li>
 </ul>
+<div class='keyboard'></div>
