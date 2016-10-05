@@ -2,28 +2,64 @@
 
 <html ng-app='talkingHeadsApp'>
 	<head>
-		<title>Talking Heads</title>
-
+		<title>Who Said Wat</title>
+		<link rel="apple-touch-icon" sizes="57x57" href="/public/img/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="/public/img/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/public/img/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="/public/img/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/public/img/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="/public/img/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="/public/img/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="/public/img/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/public/img/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192"  href="/public/img/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/public/img/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="/public/img/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/public/img/favicon-16x16.png">
+		<link rel="manifest" href="/public/img/manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="/public/img/ms-icon-144x144.png">
+		<meta name="theme-color" content="#ffffff">
+		<meta property="og:url"                content="http://whosaidwat2016.com" />
+		<meta property="og:type"               content="website" />
+		<meta property="og:title"              content="Who Said Wat" />
+		<meta property="og:description"        content="A guess-who game for our favorite quotes from the 2016 presidential election." />
+		<meta property="og:image"              content="http://whosaidwat2016.com/public/img/facebook-share.png" />
+		<base href="/">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=BioRhyme:100,400,600" rel="stylesheet">
 		<link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+		<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css' rel='stylesheet' type='text/css'>
 		<link href='/public/css/main.css' rel='stylesheet' type='text/css'>
 	</head>
 
 	<body>
-		<div class='container' ng-controller='pollController'>
-			<ul class='candidates'>
-				<li class='candidate' data-ng-repeat='candidate in candidates'>
-					<img
-						data-ng-src='{{ candidate.image }}'
-						data-ng-title='{{ candidate.name }}'
-						data-ng-style='getStyles(candidate)' />
-				</li>
-			</ul>
+	<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=306679979710579";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+		<div class='container'>
+			<ui-view></ui-view>
 		</div>
 
-		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js'></script>
-		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-resource.min.js'></script>
-		<script type='text/javascript' src='controllers/pollController.client.js'></script>
+		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js'></script>
+		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.min.js'></script>
+		<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js'></script>
+		<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.3/lodash.min.js'></script>
+
+		<script type='text/javascript' src='_common/_modl.js'></script>
+		<script type='text/javascript' src='models/poll.model.js'></script>
+		<script type='text/javascript' src='models/quote.model.js'></script>
+		<script type='text/javascript' src='services/candidate.service.js'></script>
+		<script type='text/javascript' src='directives/keypress.directive.js'></script>
+		<script type='text/javascript' src='components/candidates.componentController.js'></script>
+		<script type='text/javascript' src='components/candidates.component.js'></script>
+		<script type='text/javascript' src='components/admin.component.js'></script>
+
 	</body>
 
 </html>

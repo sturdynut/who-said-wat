@@ -1,0 +1,64 @@
+<h1 data-ng-class='{ "left": ready, "alt": successMessage }'>Who Said Wat?</h1>
+<div class='quotes-container'>
+  <ul class='quotes' data-ng-show='ready'>
+    <li class='quote' data-ng-repeat='quote in quotes'
+      data-ng-class='{"is-active": quote._id == currentQuote._id }'>
+      <span data-ng-bind='quote.quote'></span>
+    </li>
+  </ul>
+</div>
+<ul class='candidates' data-ng-show='candidates'>
+  <li class='candidate candidate--{{candidate.short_name.toLowerCase()}}'
+    data-ng-repeat='candidate in candidates'
+    data-ng-click='guess(candidate)'
+    data-ng-class='{ "candidate--loser" : candidate.isLoser, "candidate--winner": candidate.isWinner }'>
+    <div class='candidate-image'>
+      <img
+        class='candidate-image__image'
+        data-ng-src='{{ candidate.image }}'
+        data-ng-title='{{ candidate.name }}' />
+    </div>
+    <h3 class='candidate__name' data-ng-bind='candidate.short_name'></h3>
+    <div class='candidate__percentage'>{{ candidate.percentage }}</div>
+  </li>
+</ul>
+<div class='points'>
+  <span data-ng-bind='accumlatedPoints || 0'></span>
+  <span> FOR </span>
+  <span data-ng-bind='quotes.length'></span>
+</div>
+
+<div class='main-buttons'>
+  <button type='button' class='about-button' data-ng-click='showAbout = true'>
+    What is this?
+  </button>
+  <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="large" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
+</div>
+
+<button type='button' class='reset-button' data-ng-click='resetEntireGame()'>
+  <i class="fa fa-refresh" aria-hidden="true"></i>
+</button>
+
+<section class='about-page' data-ng-show='showAbout'>
+  <div>
+    <h1>What is this?</h1>
+    <p>This is game. You guess who said the thing at the top of the page.</p>
+    <h1>How do I play?</h1>
+    <p>You guess who said the quote at the top of the page by clicking one of the candidate's heads.</p>
+    <h1>Who built this?</h1>
+    <p>I am a software developer from Oregon, you can find me on <a href='https://twitter.com/sturdynut' target='_blank' rel='nofollow'>Twitter</a>.</p>
+    <div class='about-page__buttons'>
+      <button type='button' class='close-button' data-ng-click='showAbout = false'>
+        Close
+      </button>
+    </div>
+  </div>
+</section>
+
+<div class='success-message' data-ng-show='successMessage'>
+  <div data-ng-bind='successMessage'></div>
+  <button type='button' class='reset-button-2' data-ng-click='resetEntireGame()'>
+    Try Again ?
+  </button>
+  <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="large" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
+</div>

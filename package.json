@@ -1,14 +1,18 @@
 {
-  "name": "talking-heads",
-  "version": "1.0.2",
-  "description": "The talking heads of our 2016 presidential election.",
+  "name": "who-said-wat",
+  "version": "1.0.0",
+  "description": "A guess-who game for our favorite quotes from the 2016 presidential election.",
   "main": "server.js",
+  "scripts": {
+    "db": "mongod",
+    "start": "node server.js"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sturdynut/talking-heads"
+    "url": "git+https://github.com/sturdynut/who-said-wat"
   },
-  "homepage": "http://sturdynut.github.io/talking-heads/",
-  "bugs": "https://github.com/sturdynut/talking-heads/issues",
+  "homepage": "http://sturdynut.github.io/who-said-wat/",
+  "bugs": "https://github.com/sturdynut/who-said-wat/issues",
   "keywords": [
     "MEAN",
     "MongoDB",
@@ -21,9 +25,12 @@
   "author": "Matti Salokangas",
   "license": "MIT",
   "dependencies": {
+    "angular-ui-router": "^0.3.1",
+    "body-parser": "^1.15.2",
     "cheerio": "^0.22.0",
     "express": "^4.12.4",
     "mongodb": "^2.0.33",
+    "node-cache": "^4.1.0",
     "request": "^2.75.0"
   }
 }

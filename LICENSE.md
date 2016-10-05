@@ -1,4 +1,4 @@
-talking-heads
+who-said-wat
 Copyright (c) 2016 Matti Salokangas. All rights reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
