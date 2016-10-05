@@ -20,14 +20,28 @@
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="msapplication-TileImage" content="/public/img/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
+		<meta property="og:url"                content="http://whosaidwat2016.com" />
+		<meta property="og:type"               content="website" />
+		<meta property="og:title"              content="Who Said Wat" />
+		<meta property="og:description"        content="A guess-who game for our favorite quotes from the 2016 presidential election." />
+		<meta property="og:image"              content="http://whosaidwat2016.com/public/img/facebook-share.png" />
 		<base href="/">
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=BioRhyme:100,400,600" rel="stylesheet">
 		<link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
 		<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css' rel='stylesheet' type='text/css'>
 		<link href='/public/css/main.css' rel='stylesheet' type='text/css'>
 	</head>
 
 	<body>
+	<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=306679979710579";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 		<div class='container'>
 			<ui-view></ui-view>
 		</div>
@@ -45,6 +59,7 @@
 		<script type='text/javascript' src='components/candidates.componentController.js'></script>
 		<script type='text/javascript' src='components/candidates.component.js'></script>
 		<script type='text/javascript' src='components/admin.component.js'></script>
+
 	</body>
 
 </html>
