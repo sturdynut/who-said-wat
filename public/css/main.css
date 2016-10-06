@@ -205,7 +205,7 @@ button:active:focus {
   outline: 0 !important;
 }
 
-h1 {
+h1.logo {
   font-size: 3em;
   font-weight: 700;
   top: 0;
