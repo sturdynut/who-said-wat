@@ -588,16 +588,27 @@ candidates {
   left: 15px;
   bottom: 15px;
   display: flex;
+  align-items: center;
 }
 
-.main-buttons button {
+.main-buttons .about-button {
   background-color: #f0f0f0;
   color: #333;
   margin-right: 10px;
-  font-size: 1.5em;
-  border-radius: 5px;
-  padding: 6px 20px;
-  font-weight: bold;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 4em;
+  transition: all 300ms;
+}
+
+.main-buttons .about-button:hover {
+  transform: scale(1.1);
 }
 
 .reset-button-2 {
@@ -613,12 +624,18 @@ candidates {
   position: absolute;
   right: 15px;
   bottom: 15px;
-  font-size: 5em;
-  z-index: 100;
+  background-color: #f0f0f0;
   color: #333;
-  background: #f0f0f0;
+  margin-right: 10px;
   border-radius: 50%;
-  border: 12px solid #f0f0f0;
+  width: 55px;
+  height: 55px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 4em;
 }
 
 .reset-button:hover {
@@ -709,25 +726,42 @@ candidates {
   color: #fff;
   padding: 40px;
   border-radius: 25px;
+  position: relative;
+  max-width: 760px;
 }
 
 .about-page a {
   color: #fff;
 }
 
+.about-page .fb-share-button {
+  display: block;
+  margin: 40px auto 10px;
+  width: 110px;
+}
+
 .about-page__buttons {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  top: -26px;
+  right: -24px;
 }
 
-.about-page__buttons button {
+.about-page__buttons .close-button {
   background-color: #f0f0f0;
-  color: #333;
-  font-size: 1em;
-  border-radius: 5px;
-  padding: 10px 20px;
-  margin-top: 30px;
+  color: #444;
+  font-size: 2em;
+  border-radius: 50%;
+  padding: 10px 17px;
+  border: 7px solid #444;
+}
+
+.disclaimer {
+  font-size: 0.8em;
+  font-style: italic;
+  font-family: 'Courier New';
 }
 
 /* Admin Page */
@@ -763,4 +797,22 @@ candidates {
   display: inline-block;
   text-align: right;
   padding-right: 10px;
+}
+
+/* Footer */
+
+footer {
+  background-color: #fff;
+  padding: 20px;
+  color: #333;
+  font-size: 1.5em;
+  font-family: 'Courier New';
+  display: flex;
+  align-items: center;
+}
+
+footer a {
+  margin-left: auto;
+  color: #333;
+  text-decoration: none;
 }

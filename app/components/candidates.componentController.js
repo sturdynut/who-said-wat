@@ -21,6 +21,7 @@
         vm.prev = prev;
         vm.next = next;
         vm.guessed = false;
+        vm.guessLock = false;
         vm.accumlatedPoints = 0;
 
         Object.defineProperty( vm, "currentQuote", {
@@ -34,14 +35,34 @@
         function init() {
           vm.ready = false;
 
-          candidateService.getCandidates().$promise
-            .then( function( data ) {
-              vm.candidates = data;
-              // $timeout( animateCandidates );
-            } )
-            .catch( function( err ) {
-              $log.error( "Error", err );
-            } );
+          // CandidateService.getCandidates().$promise
+          //   .then( function( data ) {
+          //     vm.candidates = data;
+          //     // $timeout( animateCandidates );
+          //   } )
+          //   .catch( function( err ) {
+          //     $log.error( "Error", err );
+          //   } );
+          vm.candidates = [
+            {
+              name: "Hillary Clinton",
+              short_name: "Clinton",
+              image: "public/img/clinton.png",
+              imageChin: "public/img/clinton-chin.png"
+            },
+            {
+              name: "Donald Drumph",
+              short_name: "Drumph",
+              image: "public/img/drumph.png",
+              imageChin: "public/img/drumph-chin.png"
+            },
+            {
+              name: "Gary Johnson",
+              short_name: "Johnson",
+              image: "public/img/johnson.png",
+              imageChin: "public/img/johnson-chin.png"
+             }
+          ];
 
           candidateService.getQuotes().$promise
             .then( function( data ) {
@@ -60,6 +81,11 @@
         // Implementation
 
         function guess( candidate ) {
+          if ( vm.guessLock === true ) {
+            return false;
+          }
+
+          vm.guessLock = true;
           if ( isWinner( candidate ) ) {
             if ( vm.guessed !== true ) {
               vm.guessed = true;
@@ -85,9 +111,13 @@
                 msg = "You have been paying attention!!";
               }
               vm.successMessage = msg + " You got " + vm.accumlatedPoints + " out of " + vm.quotes.length + "!";
+              vm.guessLock = false;
             }, 1000 );
           } else {
-            $timeout( next, 1000 );
+            $timeout( function() {
+              vm.next();
+              vm.guessLock = false;
+            }, 1000 );
           }
         }
 
