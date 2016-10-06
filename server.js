@@ -1,7 +1,12 @@
 "use strict";
 
-var dotenv = require( "dotenv" );
-dotenv.load();
+try {
+	var dotenv = require( "dotenv" );
+	dotenv.load();
+}
+catch ( e ) {
+	console.log( "Error loading dotenv", e );
+}
 
 var express = require( "express" );
 var mongo = require( "mongodb" ).MongoClient;
