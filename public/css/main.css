@@ -185,8 +185,7 @@ html, body {
 }
 
 body {
-  /*font-family: 'Roboto', sans-serif;*/
-	font-family: 'BioRhyme', serif;
+  font-family: 'BioRhyme', serif;
 	font-size: 10px;
   background-color: #333;
   padding: 0;

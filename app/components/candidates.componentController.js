@@ -92,7 +92,7 @@
           if ( isWinner( candidate ) ) {
             if ( vm.guessed !== true ) {
               vm.guessed = true;
-              if ( vm.accumlatedPoints < vm.candidates.length ) {
+              if ( vm.accumlatedPoints < vm.quotes.length ) {
                 vm.accumlatedPoints++;
               }
             }
