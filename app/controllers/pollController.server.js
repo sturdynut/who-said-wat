@@ -37,8 +37,8 @@ function get( req, res ) {
             imageChin: "public/img/clinton-chin.png"
           },
           {
-            name: "Donald Drumph",
-            short_name: "Drumph",
+            name: "Donald Trump",
+            short_name: "Trump",
             percentage: drumpf,
             image: "public/img/drumph.png",
             imageChin: "public/img/drumph-chin.png"
