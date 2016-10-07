@@ -1,4 +1,8 @@
-<div class='admin-page'>
+
+<div class='auth-page' data-ng-if='!isAuthenticated'>
+  <input type='text' data-ng-model='guid' keypress on-enter='login(guid)' placeholder='Enter authentication key...' />
+</div>
+<div class='admin-page' data-ng-if='isAuthenticated'>
   <h1>Administration</h1>
   <a ui-sref='index'>Go Home</a>
   <div class='container'>
@@ -8,9 +12,13 @@
         <input id='quote' type='text' data-ng-model='model.quote' class='text-box' placeholder='Enter quote' />
       </div>
       <div class='form-row'>
+        <label for='quote'>Source:</label>
+        <input id='quote' type='text' data-ng-model='model.source' class='text-box' placeholder='Enter source' />
+      </div>
+      <div class='form-row'>
         <label for='candidate'>Candidate:</label>
         <select id='candidate' data-ng-model='model.short_name' class='select-box'>
-          <option value='Clinton'>Hillary Clinton</option>
+          <option value='Clinton' selected>Hillary Clinton</option>
           <option value='Drumph'>Donald Drumph</option>
           <option value='Johnson'>Gary Johnson</option>
         </select>
@@ -29,11 +37,11 @@
       <ul class='data-list' data-ng-repeat='quote in quotes'>
         <li class='data-list-item'>
           <input type='text' data-ng-model='quote.quote' />
+          <input type='text' data-ng-model='quote.source' />
           <input type='text' data-ng-model='quote.short_name' />
           <input type='checkbox' data-ng-model='quote.is_active' />
           <div class='data-list-item__buttons'>
             <button class='button' data-ng-click='updateQuote(quote)'>Update</button>
-            &nbsp;&nbsp;
             <button class='button' data-ng-click='removeQuote(quote)'>Remove</button>
           </div>
         <li>

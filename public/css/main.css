@@ -295,6 +295,14 @@ h1.alt {
   justify-content: center;
 }
 
+.quote__source {
+  font-size: 0.5em;
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  color: #333;
+}
+
 .quote.is-active {
   opacity: 1;
   text-indent: 0;
@@ -766,6 +774,18 @@ candidates {
 
 /* Admin Page */
 
+.auth-page input {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em;
+  padding: 30px;
+  border-radius: 25px;
+  width: 50%;
+  border-style: none;
+}
+
 .admin-page {
   color: #fff;
   padding: 30px;
@@ -784,8 +804,26 @@ candidates {
   line-height: 45px;
 }
 
-.form-container {
+.data-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
+.data-list-item {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.data-list-item [type='text'] {
+  padding: 5px;
+  flex: 1;
+  border-style: none;
+}
+
+.data-list-item > * + * {
+  margin-left: 5px;
 }
 
 .form-row {
@@ -797,6 +835,37 @@ candidates {
   display: inline-block;
   text-align: right;
   padding-right: 10px;
+}
+
+.form-row .text-box {
+  width: 80%;
+  padding: 20px;
+}
+
+.data-container {
+  margin-top: 40px;
+  background: #f9f9f9;
+  border-radius: 10px;
+}
+
+.data-list-item__buttons {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.data-list-item__buttons button,
+.action-row button {
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 55px;
+  display: block;
+}
+
+.data-list-item__buttons button + button {
+  margin-left: 5px;
 }
 
 /* Footer */
@@ -815,4 +884,10 @@ footer a {
   margin-left: auto;
   color: #333;
   text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 300ms;
+}
+
+footer a:hover {
+  border-color: #333;
 }
