@@ -477,7 +477,7 @@ candidates {
 .candidate--clinton:after {
   background-color: #232066;
 }
-.candidate--drumph:after {
+.candidate--trump:after {
   background-color: #E91D0E;
 }
 .candidate--johnson:after {
@@ -491,7 +491,7 @@ candidates {
   animation-delay: 500ms;
 }
 
-.candidate--drumph:after {
+.candidate--trump:after {
   content: ' ';
   position: absolute;
   bottom: 0;
@@ -500,7 +500,7 @@ candidates {
   height: 25px;
 }
 
-.candidate--drumph {
+.candidate--trump {
   -webkit-animation-delay: 600ms;
   -moz-animation-delay: 600ms;
   -ms-animation-delay: 600ms;
