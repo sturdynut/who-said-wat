@@ -881,11 +881,17 @@ footer {
 }
 
 footer a {
-  margin-left: auto;
   color: #333;
   text-decoration: none;
-  border-bottom: 1px solid transparent;
   transition: all 300ms;
+  margin-left: 10px;
+  border-bottom: 1px solid transparent;
+  position: relative;
+  top: 1px;
+}
+
+footer a:last-child {
+  margin-left: auto;
 }
 
 footer a:hover {
