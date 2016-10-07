@@ -278,21 +278,23 @@ h1.alt {
 
 .quote {
   color: #000;
-  line-height: 1.5;
-  font-size: 2.5em;
+  line-height: 1.2;
+  font-size: 2.2em;
   opacity: 0;
   font-family: 'Courier New';
   opacity: 0;
   text-indent: 9000px;
   transition: all 300ms;
   position: absolute;
-  top: 0;
+  top: 5px;
   right: 0;
-  bottom: 0;
-  left: 0;
+  bottom: 5px;
+  left: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
+  max-height: 120px;
+  overflow: hidden;
 }
 
 .quote__source {
@@ -300,7 +302,16 @@ h1.alt {
   position: absolute;
   bottom: 5px;
   right: 10px;
-  color: #333;
+  color: #999;
+  text-decoration: none;
+  transition: all 300ms;
+  z-index: 10;
+  border-bottom: 1px solid transparent;
+}
+
+.quote__source:hover {
+  color: #000;
+  border-color: #000;
 }
 
 .quote.is-active {
@@ -680,7 +691,7 @@ candidates {
   text-align: center;
   z-index: 100;
   border: 0 solid #333;
-  min-width: 600px;
+  min-width: 768px;
   width: 50%;
 
   -webkit-animation-name: successExpand;

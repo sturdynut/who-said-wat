@@ -4,7 +4,7 @@
     <li class='quote' data-ng-repeat='quote in quotes'
       data-ng-class='{"is-active": quote._id == currentQuote._id }'>
       <span data-ng-bind='quote.quote'></span>
-      <a class='quote__source' href='{{ quote.source }}' data-ng-bind='[ Source ]' target='_blank' rel='nofollow'></a>
+      <a class='quote__source' href='{{ quote.source }}' target='_blank' rel='nofollow'>Source</a>
     </li>
   </ul>
 </div>
@@ -33,7 +33,7 @@
   <a href='javascript:;' class='about-button' data-ng-click='showAbout = true'>
       <i class="fa fa-question" aria-hidden="true"></i>
   </a>
-  <div class="fb-share-button" data-href="http://who-said-wat.herokuapp.com" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwho-said-wat.herokuapp.com%2F&amp;src=sdkpreparse">Share</a></div>
+  <div class="fb-share-button" data-href="http://whosaidwat.com" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwho-said-wat.herokuapp.com%2F&amp;src=sdkpreparse">Share</a></div>
 </div>
 <button type='button' class='reset-button' data-ng-click='resetEntireGame()'>
   <i class="fa fa-refresh" aria-hidden="true"></i>
@@ -50,7 +50,7 @@
     <p class='disclaimer'>
       <span>Disclaimer:</span>  I did not build this in support of any particular candidate.  They all suck in their own unique way, although some very memorable things have been said! Why not make some fun of it?
     </p>
-    <div class="fb-share-button" data-href="http://who-said-wat.herokuapp.com" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwho-said-wat.herokuapp.com%2F&amp;src=sdkpreparse">Share</a></div>
+    <div class="fb-share-button" data-href="http://whosaidwat.com" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwho-said-wat.herokuapp.com%2F&amp;src=sdkpreparse">Share</a></div>
     <div class='about-page__buttons'>
       <button type='button' class='close-button' data-ng-click='showAbout = false'>
         <span class='fa fa-close'></span>
@@ -64,5 +64,5 @@
   <button type='button' class='reset-button-2' data-ng-click='resetEntireGame()'>
     Try Again ?
   </button>
-  <div class="fb-share-button" data-href="http://who-said-wat.herokuapp.com" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwho-said-wat.herokuapp.com%2F&amp;src=sdkpreparse">Share</a></div>
+  <div class="fb-share-button" data-href="http://whosaidwat.com" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwho-said-wat.herokuapp.com%2F&amp;src=sdkpreparse">Share</a></div>
 </div>
