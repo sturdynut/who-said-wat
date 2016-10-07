@@ -185,8 +185,7 @@ html, body {
 }
 
 body {
-  /*font-family: 'Roboto', sans-serif;*/
-	font-family: 'BioRhyme', serif;
+  font-family: 'BioRhyme', serif;
 	font-size: 10px;
   background-color: #333;
   padding: 0;
@@ -205,7 +204,7 @@ button:active:focus {
   outline: 0 !important;
 }
 
-h1 {
+h1.logo {
   font-size: 3em;
   font-weight: 700;
   top: 0;
@@ -278,21 +277,40 @@ h1.alt {
 
 .quote {
   color: #000;
-  line-height: 1.5;
-  font-size: 2.5em;
+  line-height: 1.2;
+  font-size: 2.2em;
   opacity: 0;
   font-family: 'Courier New';
   opacity: 0;
   text-indent: 9000px;
   transition: all 300ms;
   position: absolute;
-  top: 0;
+  top: 5px;
   right: 0;
-  bottom: 0;
-  left: 0;
+  bottom: 5px;
+  left: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
+  max-height: 120px;
+  overflow: hidden;
+}
+
+.quote__source {
+  font-size: 0.5em;
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  color: #999;
+  text-decoration: none;
+  transition: all 300ms;
+  z-index: 10;
+  border-bottom: 1px solid transparent;
+}
+
+.quote__source:hover {
+  color: #000;
+  border-color: #000;
 }
 
 .quote.is-active {
@@ -557,7 +575,7 @@ candidates {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 180px;
+  width: 230px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -588,16 +606,27 @@ candidates {
   left: 15px;
   bottom: 15px;
   display: flex;
+  align-items: center;
 }
 
-.main-buttons button {
+.main-buttons .about-button {
   background-color: #f0f0f0;
   color: #333;
   margin-right: 10px;
-  font-size: 1.5em;
-  border-radius: 5px;
-  padding: 6px 20px;
-  font-weight: bold;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 4em;
+  transition: all 300ms;
+}
+
+.main-buttons .about-button:hover {
+  transform: scale(1.1);
 }
 
 .reset-button-2 {
@@ -613,12 +642,18 @@ candidates {
   position: absolute;
   right: 15px;
   bottom: 15px;
-  font-size: 5em;
-  z-index: 100;
+  background-color: #f0f0f0;
   color: #333;
-  background: #f0f0f0;
+  margin-right: 10px;
   border-radius: 50%;
-  border: 12px solid #f0f0f0;
+  width: 55px;
+  height: 55px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 4em;
 }
 
 .reset-button:hover {
@@ -655,7 +690,7 @@ candidates {
   text-align: center;
   z-index: 100;
   border: 0 solid #333;
-  min-width: 600px;
+  min-width: 768px;
   width: 50%;
 
   -webkit-animation-name: successExpand;
@@ -709,28 +744,57 @@ candidates {
   color: #fff;
   padding: 40px;
   border-radius: 25px;
+  position: relative;
+  max-width: 760px;
 }
 
 .about-page a {
   color: #fff;
 }
 
+.about-page .fb-share-button {
+  display: block;
+  margin: 40px auto 10px;
+  width: 110px;
+}
+
 .about-page__buttons {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  top: -26px;
+  right: -24px;
 }
 
-.about-page__buttons button {
+.about-page__buttons .close-button {
   background-color: #f0f0f0;
-  color: #333;
-  font-size: 1em;
-  border-radius: 5px;
-  padding: 10px 20px;
-  margin-top: 30px;
+  color: #444;
+  font-size: 2em;
+  border-radius: 50%;
+  padding: 10px 17px;
+  border: 7px solid #444;
+}
+
+.disclaimer {
+  font-size: 0.8em;
+  font-style: italic;
+  font-family: 'Courier New';
 }
 
 /* Admin Page */
+
+.auth-page input {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em;
+  padding: 30px;
+  border-radius: 25px;
+  width: 50%;
+  border-style: none;
+}
 
 .admin-page {
   color: #fff;
@@ -750,8 +814,26 @@ candidates {
   line-height: 45px;
 }
 
-.form-container {
+.data-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
+.data-list-item {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.data-list-item [type='text'] {
+  padding: 5px;
+  flex: 1;
+  border-style: none;
+}
+
+.data-list-item > * + * {
+  margin-left: 5px;
 }
 
 .form-row {
@@ -763,4 +845,65 @@ candidates {
   display: inline-block;
   text-align: right;
   padding-right: 10px;
+}
+
+.form-row .text-box {
+  width: 80%;
+  padding: 20px;
+}
+
+.data-container {
+  margin-top: 40px;
+  background: #f9f9f9;
+  border-radius: 10px;
+}
+
+.data-list-item__buttons {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.data-list-item__buttons button,
+.action-row button {
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 55px;
+  display: block;
+}
+
+.data-list-item__buttons button + button {
+  margin-left: 5px;
+}
+
+/* Footer */
+
+footer {
+  background-color: #fff;
+  padding: 20px;
+  color: #333;
+  font-size: 1.5em;
+  font-family: 'Courier New';
+  display: flex;
+  align-items: center;
+}
+
+footer a {
+  color: #333;
+  text-decoration: none;
+  transition: all 300ms;
+  margin-left: 10px;
+  border-bottom: 1px solid transparent;
+  position: relative;
+  top: 1px;
+}
+
+footer a:last-child {
+  margin-left: auto;
+}
+
+footer a:hover {
+  border-color: #333;
 }

@@ -1,9 +1,10 @@
-<h1 data-ng-class='{ "left": ready, "alt": successMessage }'>Who Said Wat?</h1>
+<h1 class='logo' data-ng-class='{ "left": ready, "alt": successMessage }'>Who Said Wat?</h1>
 <div class='quotes-container'>
   <ul class='quotes' data-ng-show='ready'>
     <li class='quote' data-ng-repeat='quote in quotes'
       data-ng-class='{"is-active": quote._id == currentQuote._id }'>
       <span data-ng-bind='quote.quote'></span>
+      <a class='quote__source' href='{{ quote.source }}' target='_blank' rel='nofollow'>Source</a>
     </li>
   </ul>
 </div>
@@ -19,7 +20,7 @@
         data-ng-title='{{ candidate.name }}' />
     </div>
     <h3 class='candidate__name' data-ng-bind='candidate.short_name'></h3>
-    <div class='candidate__percentage'>{{ candidate.percentage }}</div>
+    <!-- <div class='candidate__percentage'>{{ candidate.percentage }}</div> -->
   </li>
 </ul>
 <div class='points'>
@@ -29,12 +30,11 @@
 </div>
 
 <div class='main-buttons'>
-  <button type='button' class='about-button' data-ng-click='showAbout = true'>
-    What is this?
-  </button>
-  <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="large" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
+  <a href='javascript:;' class='about-button' data-ng-click='showAbout = true'>
+      <i class="fa fa-question" aria-hidden="true"></i>
+  </a>
+  <div class="fb-share-button" data-href="http://whosaidwat.com" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwho-said-wat.herokuapp.com%2F&amp;src=sdkpreparse">Share</a></div>
 </div>
-
 <button type='button' class='reset-button' data-ng-click='resetEntireGame()'>
   <i class="fa fa-refresh" aria-hidden="true"></i>
 </button>
@@ -42,14 +42,18 @@
 <section class='about-page' data-ng-show='showAbout'>
   <div>
     <h1>What is this?</h1>
-    <p>This is game. You guess who said the thing at the top of the page.</p>
+    <p>This is game where you guess who said the thing at the top of the page!</p>
     <h1>How do I play?</h1>
-    <p>You guess who said the quote at the top of the page by clicking one of the candidate's heads.</p>
+    <p>You click the head of who said the quote at the top of the page.</p>
     <h1>Who built this?</h1>
-    <p>I am a software developer from Oregon, you can find me on <a href='https://twitter.com/sturdynut' target='_blank' rel='nofollow'>Twitter</a>.</p>
+    <p>I am a software developer from Oregon <span class='fa fa-tree'></span>, you can find me on <a href='https://twitter.com/sturdynut' target='_blank' rel='nofollow'>Twitter</a>.</p>
+    <p class='disclaimer'>
+      <span>Disclaimer:</span>  I did not build this in support of any particular candidate.  They all suck in their own unique way, although some very memorable things have been said! Why not make some fun of it?
+    </p>
+    <div class="fb-share-button" data-href="http://whosaidwat.com" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwho-said-wat.herokuapp.com%2F&amp;src=sdkpreparse">Share</a></div>
     <div class='about-page__buttons'>
       <button type='button' class='close-button' data-ng-click='showAbout = false'>
-        Close
+        <span class='fa fa-close'></span>
       </button>
     </div>
   </div>
@@ -60,5 +64,5 @@
   <button type='button' class='reset-button-2' data-ng-click='resetEntireGame()'>
     Try Again ?
   </button>
-  <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="large" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
+  <div class="fb-share-button" data-href="http://whosaidwat.com" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwho-said-wat.herokuapp.com%2F&amp;src=sdkpreparse">Share</a></div>
 </div>

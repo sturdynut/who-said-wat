@@ -1,5 +1,13 @@
 "use strict";
 
+try {
+	var dotenv = require( "dotenv" );
+	dotenv.load();
+}
+catch ( e ) {
+	console.log( "Error loading dotenv", e );
+}
+
 var express = require( "express" );
 var mongo = require( "mongodb" ).MongoClient;
 var bodyParser = require( "body-parser" );
@@ -7,7 +15,7 @@ var routes = require( "./app/routes/index.js" );
 
 var app = express();
 
-mongo.connect( "mongodb://localhost:27017/who-said-wat", function( err, db ) {
+mongo.connect( process.env.Mongo_URI, function( err, db ) {
 
 	if ( err ) {
 		throw new Error( "Database failed to connect!" );
@@ -29,7 +37,7 @@ mongo.connect( "mongodb://localhost:27017/who-said-wat", function( err, db ) {
 	routes( app, db );
 
 	var port = 3000;
-	app.listen( port, function() {
+	app.listen( process.env.PORT || port, function() {
 		console.log( "Node.js listening on port " + port + "..." );
 	} );
 

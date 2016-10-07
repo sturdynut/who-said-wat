@@ -11,9 +11,14 @@
       "$log",
       "$resource",
       "$timeout",
-      function( $scope, $log, $resource, $timeout ) {
+      "auth",
+      function( $scope, $log, $resource, $timeout, auth ) {
         var vm = $scope;
         var QuoteResource = $resource( "/api/quotes/:id" );
+
+        // Properties
+
+        vm.guid = null;
 
         // Interface
 
@@ -21,6 +26,7 @@
         vm.addQuote = addQuote;
         vm.updateQuote = updateQuote;
         vm.removeQuote = removeQuote;
+        vm.login = login;
 
         // Initialization
 
@@ -57,11 +63,26 @@
           } );
         };
 
+        function login( guid ) {
+          if ( guid && guid.length === 32 ) {
+            auth.get( {
+              guid: guid
+            } ).$promise
+            .then( function() {
+              vm.isAuthenticated = true;
+            } )
+            .catch( function( e ) {
+              $log.error( "Error", e );
+            } );
+          }
+        }
+
         // Private
 
         function resetModel() {
           vm.model = new QuoteResource( {
             quote: null,
+            source: null,
             short_name: null,
             is_active: true
           } );

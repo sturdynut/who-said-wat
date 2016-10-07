@@ -20,16 +20,16 @@
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="msapplication-TileImage" content="/public/img/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
-		<meta property="og:url"                content="http://whosaidwat2016.com" />
+		<meta property="og:url"                content="http://whosaidwat.com" />
 		<meta property="og:type"               content="website" />
 		<meta property="og:title"              content="Who Said Wat" />
 		<meta property="og:description"        content="A guess-who game for our favorite quotes from the 2016 presidential election." />
-		<meta property="og:image"              content="http://whosaidwat2016.com/public/img/facebook-share.png" />
+		<meta property="og:image"              content="http://whosaidwat.com/public/img/facebook-share.png" />
 		<base href="/">
-		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-		<link href="https://fonts.googleapis.com/css?family=BioRhyme:100,400,600" rel="stylesheet">
-		<link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
-		<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css' rel='stylesheet' type='text/css'>
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+		<link href="//fonts.googleapis.com/css?family=BioRhyme:100,400,600" rel="stylesheet">
+		<link href='//fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+		<link href='//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css' rel='stylesheet' type='text/css'>
 		<link href='/public/css/main.css' rel='stylesheet' type='text/css'>
 	</head>
 
@@ -45,6 +45,13 @@
 		<div class='container'>
 			<ui-view></ui-view>
 		</div>
+		<footer>
+			&copy; Copyright 2016.  All Rights Reserved. Best viewed on <a href='https://www.google.com/chrome/' target='_blank'>Google Chrome</a>.
+			<a href='https://github.com/sturdynut/who-said-wat' target='_blank'>
+        Source Code
+        <span class='fa fa-github fa-lg'></span>
+      </a>
+		</footer>
 
 		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js'></script>
 		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.min.js'></script>
@@ -54,12 +61,22 @@
 		<script type='text/javascript' src='_common/_modl.js'></script>
 		<script type='text/javascript' src='models/poll.model.js'></script>
 		<script type='text/javascript' src='models/quote.model.js'></script>
+		<script type='text/javascript' src='models/auth.model.js'></script>
 		<script type='text/javascript' src='services/candidate.service.js'></script>
 		<script type='text/javascript' src='directives/keypress.directive.js'></script>
 		<script type='text/javascript' src='components/candidates.componentController.js'></script>
 		<script type='text/javascript' src='components/candidates.component.js'></script>
 		<script type='text/javascript' src='components/admin.component.js'></script>
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+		  ga('create', 'UA-74241109-2', 'auto');
+		  ga('send', 'pageview');
+
+		</script>
 	</body>
 
 </html>
