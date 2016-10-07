@@ -4,7 +4,7 @@
     <li class='quote' data-ng-repeat='quote in quotes'
       data-ng-class='{"is-active": quote._id == currentQuote._id }'>
       <span data-ng-bind='quote.quote'></span>
-      <a class='quote__source' href='{{ quote.source }}' data-ng-bind='quote.source' target='_blank' rel='nofollow'></a>
+      <a class='quote__source' href='{{ quote.source }}' data-ng-bind='[ Source ]' target='_blank' rel='nofollow'></a>
     </li>
   </ul>
 </div>
