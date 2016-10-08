@@ -3,7 +3,9 @@
   <ul class='quotes' data-ng-show='ready'>
     <li class='quote' data-ng-repeat='quote in quotes'
       data-ng-class='{"is-active": quote._id == currentQuote._id }'>
+      <span class='fa fa-quote-left'></span>
       <span data-ng-bind='quote.quote'></span>
+      <span class='fa fa-quote-right'></span>
       <a class='quote__source' href='{{ quote.source }}' target='_blank' rel='nofollow'>Source</a>
     </li>
   </ul>
@@ -19,8 +21,15 @@
         data-ng-src='{{ candidate.image }}'
         data-ng-title='{{ candidate.name }}' />
     </div>
-    <h3 class='candidate__name' data-ng-bind='candidate.short_name'></h3>
+    <h3 class='candidate__name'  data-ng-bind='candidate.short_name'></h3>
+    <h3 class='candidate__name candidate__name--funny' data-ng-bind='candidate.funny_name'></h3>
     <!-- <div class='candidate__percentage'>{{ candidate.percentage }}</div> -->
+    <div class='candidate__correct'>
+      <span class='fa fa-check'></span>
+    </div>
+    <div class='candidate__wrong'>
+      <span class='fa fa-close'></span>
+    </div>
   </li>
 </ul>
 <div class='points'>
@@ -48,14 +57,15 @@
     <h1>Who built this?</h1>
     <p>I am a software developer from Oregon <span class='fa fa-tree'></span>, you can find me on <a href='https://twitter.com/sturdynut' target='_blank' rel='nofollow'>Twitter</a>.</p>
     <p class='disclaimer'>
-      <span>Disclaimer:</span>  I did not build this in support of any particular candidate.  They all suck in their own unique way, although some very memorable things have been said! Why not make some fun of it?
+      <span>Disclaimer:</span>  I did not build this in support of any particular candidate.  I think it is important to know what each candidate has said, who runs this country is kinda a big deal.  Cast your vote this November with care and please educate yourself!  Enjoy the game.  <span class='fa fa-smile-o'></span>
     </p>
-    <div class="fb-share-button" data-href="http://whosaidwat.com" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwho-said-wat.herokuapp.com%2F&amp;src=sdkpreparse">Share</a></div>
     <div class='about-page__buttons'>
-      <button type='button' class='close-button' data-ng-click='showAbout = false'>
-        <span class='fa fa-close'></span>
-      </button>
+      <button type='button' class='play-button' data-ng-click='showAbout = false'>Play!</button>
+      <div class="fb-share-button" data-href="http://whosaidwat.com" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwho-said-wat.herokuapp.com%2F&amp;src=sdkpreparse">Share</a></div>
     </div>
+    <button type='button' class='close-button' data-ng-click='showAbout = false'>
+      <span class='fa fa-close'></span>
+    </button>
   </div>
 </section>
 

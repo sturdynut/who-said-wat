@@ -23,6 +23,7 @@
         vm.guessed = false;
         vm.guessLock = false;
         vm.accumlatedPoints = 0;
+        vm.showAbout = true;
 
         Object.defineProperty( vm, "currentQuote", {
           get: function() {
@@ -47,18 +48,21 @@
             {
               name: "Hillary Clinton",
               short_name: "Clinton",
+              funny_name: "Shillary",
               image: "public/img/clinton.png",
               imageChin: "public/img/clinton-chin.png"
             },
             {
               name: "Donald Trump",
               short_name: "Trump",
+              funny_name: "Drumph",
               image: "public/img/drumph.png",
               imageChin: "public/img/drumph-chin.png"
             },
             {
               name: "Gary Johnson",
               short_name: "Johnson",
+              funny_name: "Johnson",
               image: "public/img/johnson.png",
               imageChin: "public/img/johnson-chin.png"
              }
@@ -120,12 +124,12 @@
                 .shuffle()
                 .shuffle()
                 .value();
-            }, 1000 );
+            }, 1750 );
           } else {
             $timeout( function() {
               vm.next();
               vm.guessLock = false;
-            }, 1000 );
+            }, 1750 );
           }
         }
 
@@ -181,6 +185,10 @@
           return vm.currentQuote && vm.currentQuote.short_name === candidate.short_name;
         }
 
+        function getWinner( ) {
+          return _.find( vm.candidates, { short_name: vm.currentQuote.short_name } );
+        }
+
         function setWinner( winner ) {
           vm.candidates = _.map( vm.candidates, function( candidate ) {
             var isWinner = winner ? candidate.short_name === winner.short_name : false;
@@ -192,6 +200,7 @@
         }
 
         function setLoser( loser ) {
+
           vm.candidates = _.map( vm.candidates, function( candidate ) {
             var isLoser = candidate.isLoser;
             if ( _.isUndefined( isLoser ) || isLoser !== true ) {
@@ -202,6 +211,8 @@
               isLoser: isLoser
             } );
           } );
+
+          setWinner( getWinner() );
         }
 
         function resetAllLosers( ) {
