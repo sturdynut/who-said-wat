@@ -323,8 +323,6 @@ h1.alt {
   justify-content: center;
   max-height: 110px;
   overflow: hidden;
-  white-space: nowrap;
-  overflow: hidden;
   text-overflow: ellipsis;
 }
 
