@@ -70,10 +70,8 @@
 
           candidateService.getQuotes().$promise
             .then( function( data ) {
-              vm.quotes = _( data )
-                .shuffle()
-                .shuffle()
-                .value();
+              vm.all_quotes = data;
+              randomizeQuotesAndTake10();
               $timeout( function() {
                 vm.ready = true;
               }, 1500 );
@@ -120,10 +118,7 @@
               vm.successMessage = msg + " You got " + vm.accumlatedPoints + " out of " + vm.quotes.length + "!";
               vm.guessLock = false;
 
-              vm.quotes = _( vm.quotes )
-                .shuffle()
-                .shuffle()
-                .value();
+              randomizeQuotesAndTake10();
             }, 1750 );
           } else {
             $timeout( function() {
@@ -176,6 +171,14 @@
         }
 
         // Private
+
+        function randomizeQuotesAndTake10() {
+          vm.quotes = _( vm.all_quotes )
+            .shuffle()
+            .shuffle()
+            .take( 10 )
+            .value();
+        }
 
         function isAtEnd() {
           return vm.quoteIndex === vm.quotes.length - 1;
