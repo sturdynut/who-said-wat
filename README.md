@@ -1,5 +1,9 @@
 # Who Said Wat
 
+[![Build Status](https://travis-ci.org/sturdynut/who-said-wat.svg?branch=master)](https://travis-ci.org/sturdynut/who-said-wat) 
+[![Dependency Status](https://david-dm.org/sturdynut/who-said-wat.svg)](https://david-dm.org/sturdynut/who-said-wat) 
+[![devDependency Status](https://david-dm.org/sturdynut/who-said-wat/dev-status.png)](https://david-dm.org/sturdynut/who-said-wat?type=dev)
+
 A guess-who game for our favorite quotes from the 2016 presidential election.
 
 ## Running
