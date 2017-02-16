@@ -5,6 +5,9 @@
 
 A guess-who game for our favorite quotes from the 2016 presidential election.
 
+View the live site here:
+[whosaidwat.com](whosaidwat.com)
+
 ## Running
 
 1. `mongod`
